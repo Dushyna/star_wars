@@ -6,7 +6,7 @@
     --bg-color-red: rgba(204, 3, 35, 0.5);
 }
 
-body {
+.all {
     font-family: "Poller One", sans-serif;
     background-image: url("./assets/sky.jpg");
     color: var(--color-main);
