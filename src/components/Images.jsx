@@ -1,10 +1,10 @@
 const Images = ({src}) => {
     let style;
-    if (src==='/friend7.jpg') {
+    if (src === '/friend7.jpg') {
         style = "col-sm-4 p-1 img1";
-    }else if(src==='/friend9.jpg') {
+    } else if (src === '/friend9.jpg') {
         style = "col-sm-4 p-1 img2";
-    }else {
+    } else {
         style = "col-sm-4 p-1";
     }
 
