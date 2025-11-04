@@ -1,29 +1,29 @@
+import {base_url} from "../utils/constants.js";
+import {useEffect, useState} from "react";
+
 function SectionMiddle() {
-    return (
-        <p className="far-galaxy fs-2 lh-2">
-            It is a period of civil war.
-            Rebel spaceships, striking
-            from a hidden base, have won
-            their first victory against
-            the evil Galactic Empire.
+    const [openingCrawl,setOpeningCrawl] = useState();
+   useEffect(() => {
+       const episode=Math.floor(Math.random() * 6) + 1;
+      fetch(`${base_url}/v1/films/${episode}`)
+       .then(res => res.json())
+       .then(data => setOpeningCrawl(data.opening_crawl))
+          .catch(()=>setOpeningCrawl('Error on fetch opening crawl'))
 
-            During the battle, Rebel
-            spies managed to steal secret
-            plans to the Empire's
-            ultimate weapon, the DEATH
-            STAR, an armored space
-            station with enough power
-            to destroy an entire planet.
+   }, [])
+    if (openingCrawl) {
+        return (
+            <p className="far-galaxy fs-2 lh-2">{openingCrawl} </p>
+        )
+    }else{
+        return (
+            <p className="far-galaxy fs-2 lh-2">
+                <span className={'spinner-border spinner-border-sm'}> </span>
+                <span className={'spinner-grow spinner-grow-sm' }>Loading...</span>
+            </p>
+        )
+    }
 
-            Pursued by the Empire's
-            sinister agents, Princess
-            Leia races home aboard her
-            starship, custodian of the
-            stolen plans that can save her
-            people and restore
-            freedom to the galaxy....
-        </p>
-    )
 }
 
 export default SectionMiddle;
